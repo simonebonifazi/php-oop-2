@@ -1,6 +1,6 @@
 <?php
-require_once '/Products.php';
-class Food extends Products
+require_once '/Product.php';
+class Food extends Product
 {
   protected $animal_type;
   protected $food_type;

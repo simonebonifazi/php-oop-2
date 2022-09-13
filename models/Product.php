@@ -1,5 +1,5 @@
 <?php
-class Products 
+class Product 
 
 {
   private $id;
