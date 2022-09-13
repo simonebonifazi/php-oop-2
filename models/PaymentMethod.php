@@ -1,27 +1,27 @@
 <?php
 class PaymentMethod
 {
-  protected $number;
+  protected $card_number;
   protected $balance;
   protected $expiration_date;
 
-  public function __construct($number, $balance)
+  public function __construct($card_number, $balance)
   {
-    $this->setNumber($number);
+    $this->setCardNumber($card_number);
     $this->setBalance($balance);
   }
 
-  private function setNumber($number)
+  private function setCardNumber($card_number)
   {
-    if(!is_numeric($number)) return;
-    $this->number = $number;
+    if(!is_numeric($card_number) && strlen($card_number) != 16) return;
+    $this->card_number = $card_number;
     $this->setExpirationDate(); //al momento di registrazione della carta, ottengo la data di scadenza
     return $this;
   }
 
   private function setExpirationDate()
   {
-    $expiration_date = date('Y-m-d', strtotime(' + 8 years'));
+    $expiration_date = date('d-m-Y', strtotime(' + 8 years'));
     $this->expiration_date = $expiration_date;
     return $this;
   }
@@ -31,9 +31,9 @@ class PaymentMethod
     return $this->expiration_date;
   }
 
-  public function getNumber()
+  public function getCardNumber()
   {
-    return $this->number;
+    return $this->card_number;
   }
 
   private function setBalance($balance)
@@ -50,7 +50,7 @@ class PaymentMethod
 
   public function checkPayment($amount)
   {
-    $current_date = date('Y-m-d');
+    $current_date = date('d-m-Y');
     if(!is_numeric($amount) || $amount < 0 || $this->balance < $amount || $current_date > $this->expiration_date) return false;
 
     $this->balance -= $amount;
