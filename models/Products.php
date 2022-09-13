@@ -9,12 +9,25 @@ class Products
 
   public function __construct($id, $name, $description, $price)
   {
-    $this->id;
+    $this->setId($id);
     $this->setName($name);
     $this->setDescription($description);
     $this->setPrice($price);
   }
 
+  protected function setid($id)
+  {
+    //per gestire l'autoincremento dell'id
+    if( !is_numeric($id) || $this->id < 0) return
+    $this->id = $id++;
+
+    return $this;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
   protected function setName($name)
   {
     $this->name = $name;
