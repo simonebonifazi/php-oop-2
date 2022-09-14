@@ -1,17 +1,17 @@
 <?php 
-/*
-Oggi pomeriggio provate ad immaginare quali sono le classi necessarie per creare uno shop online con le seguenti caratteristiche.
-L'e-commerce vende prodotti per gli animali.
-I prodotti saranno oltre al cibo, anche giochi, cucce, etc.
-L'utente potrà sia comprare i prodotti senza registrarsi, oppure iscriversi e ricevere il 20% di sconto su tutti i prodotti.
-Il pagamento avviene con la carta di credito, che non deve essere scaduta.
-BONUS:
-Alcuni prodotti (es. antipulci) avranno la caratteristica che saranno disponibili solo in un periodo particolare (es. da maggio ad agosto).
-NOTE:
-Lo scopo di questo esercizio è farvi ragionare su quali classi utilizzare, quali proprietà e metodi dovrebbero avere e come sono relazionate tra loro anche in termini di ereditarietà.
-Cercate di fare molta analisi, magari facendo uno schemino delle classi e delle loro proprietà e metodi su draw.io e solo dopo passate al codice. Meglio un'analisi
-fatta bene che del codice scritto male.
-Non preoccupatevi se non riuscite a finirlo, purchè sia fatto bene fin dove arrivate.
-Buon lavoro!
-*/
+include_once __DIR__ . '/models/cart/Cart.php';
+include_once __DIR__ . '/models/products/Products.php';
+//include_once __DIR__ . '/models/cart/Cart.php'
+
+$prodotto_1 = new Food('Mangime DOP','cibo adatto a sfamare cavie peruviane e consigli nani di prima scelta', 5,['Conigli, Cavie'], '500 g', ['carote','mais','avena'] );
+
+$prodotto_2 = new Toy('Mordino', 12, ['gomma', 'plastica dura'], '350 g', '15 cm');
+
+
+$carrello = new Cart();
+
+$carrello->addProduct($prodotto_1, $prodotto_2);
+
+//var_dump($carrello)
+
 ?>

@@ -32,8 +32,8 @@ class Cart
     {
         if(!($product instanceof Product)) 
         $id = $product->getId();
-        foreach($this->products as $key => $value){
-            if($value->getId() == $id) unset($this->products[$key]);
+        foreach($this->products as $index => $value){
+            if($value->getId() == $id) unset($this->products[$index]);
         }
     }
 
