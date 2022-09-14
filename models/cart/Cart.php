@@ -27,4 +27,15 @@ class Cart
         if(!($product instanceof Product)) return false;
         $this->products[] = $product;
     }
+    
+    public function removeProduct($product)
+    {
+        if(!($product instanceof Product)) 
+        $id = $product->getId();
+        foreach($this->products as $key => $value){
+            if($value->getId() == $id) unset($this->products[$key]);
+        }
+    }
+
+
 }
